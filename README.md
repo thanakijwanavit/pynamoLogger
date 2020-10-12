@@ -4,7 +4,8 @@
 
 ## Install
 
-`pip install villaProductSdk`
+`pip install villaProductSdk`<br>
+# view [Documentation](https://thanakijwanavit.github.io/linesdk/)
 
 ## How to use
 
@@ -12,7 +13,7 @@ Uploading a large amount of data using s3
 
 ## generate dummy data for testing
 
-```python
+```
 #Dummy Data
 sampleInput = {
   "message": "helloWorld",
@@ -24,7 +25,7 @@ sampleInput = {
 
 ## Create main class object
 
-```python
+```
 from linesdk.linesdk import Line
 
 line = Line(accessKey = sampleInput['accessKey'] )
@@ -32,7 +33,7 @@ line = Line(accessKey = sampleInput['accessKey'] )
 
 ## send message
 
-```python
+```
 %%time
 line.send(roomId = sampleInput['roomId'] ,message = sampleInput['message'])
 ```
@@ -50,7 +51,7 @@ line.send(roomId = sampleInput['roomId'] ,message = sampleInput['message'])
 
 ## LambdaFunction
 
-```python
+```
 %%time
 line.lambdaSend(sampleInput, _)
 ```
@@ -61,7 +62,7 @@ line.lambdaSend(sampleInput, _)
 
 # Call a deployed lambda function
 
-```python
+```
 %%time
 lineLambda = LineLambda(USER, PW)
 lineLambda.send(message='hello', roomId = sampleInput['roomId'])

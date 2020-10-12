@@ -2,16 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"Response": "Schema.ipynb",
-         "Event": "Schema.ipynb",
-         "Product": "Schema.ipynb",
-         "Products": "Schema.ipynb",
-         "FunctionNames": "linesdk.ipynb",
+index = {"FunctionNames": "linesdk.ipynb",
          "Line": "linesdk.ipynb",
          "LineLambda": "linesdk.ipynb"}
 
-modules = ["schema.py",
-           "linesdk.py"]
+modules = ["linesdk.py"]
 
 doc_url = "https://thanakijwanavit.github.io/linesdk/"
 
