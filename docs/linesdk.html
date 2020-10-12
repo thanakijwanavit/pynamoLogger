@@ -54,7 +54,7 @@ nb_path: "linesdk.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="FunctionNames" class="doc_header"><code>class</code> <code>FunctionNames</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FunctionNames</code>(<strong><code>branchName</code></strong>:<code>str</code>=<em><code>'dev-manual'</code></em>)</p>
+<h2 id="FunctionNames" class="doc_header"><code>class</code> <code>FunctionNames</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L13" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FunctionNames</code>(<strong><code>branchName</code></strong>:<code>str</code>=<em><code>'dev-manual'</code></em>)</p>
 </blockquote>
 
 <pre><code>determine function and resources name based on branchName</code></pre>
@@ -87,7 +87,7 @@ nb_path: "linesdk.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Line" class="doc_header"><code>class</code> <code>Line</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L26" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Line</code>(<strong><code>accessKey</code></strong>:<code>str</code>=<em><code>''</code></em>)</p>
+<h2 id="Line" class="doc_header"><code>class</code> <code>Line</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Line</code>(<strong><code>accessKey</code></strong>:<code>str</code>=<em><code>''</code></em>)</p>
 </blockquote>
 
 <pre><code>the main class for interacting with product endpoint
@@ -114,7 +114,7 @@ user/pw are optional</code></pre>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LineLambda" class="doc_header"><code>class</code> <code>LineLambda</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L43" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineLambda</code>(<strong><code>user</code></strong>=<em><code>None</code></em>, <strong><code>pw</code></strong>=<em><code>None</code></em>, <strong><code>region</code></strong>=<em><code>'ap-southeast-1'</code></em>)</p>
+<h2 id="LineLambda" class="doc_header"><code>class</code> <code>LineLambda</code><a href="https://github.com/thanakijwanavit/linebotsdk/tree/master/linesdk/linesdk.py#L45" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LineLambda</code>(<strong><code>user</code></strong>=<em><code>None</code></em>, <strong><code>pw</code></strong>=<em><code>None</code></em>, <strong><code>region</code></strong>=<em><code>'ap-southeast-1'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -191,8 +191,8 @@ user/pw are optional</code></pre>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>True
-CPU times: user 16.6 ms, sys: 5.45 ms, total: 22 ms
-Wall time: 358 ms
+CPU times: user 17 ms, sys: 5.38 ms, total: 22.4 ms
+Wall time: 533 ms
 </pre>
 </div>
 </div>
@@ -230,10 +230,60 @@ Wall time: 358 ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 15.8 ms, sys: 2.46 ms, total: 18.2 ms
-Wall time: 345 ms
+<pre>CPU times: user 14.7 ms, sys: 2.15 ms, total: 16.9 ms
+Wall time: 213 ms
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Call-function-using-deployed-Lambda-function">Call function using deployed Lambda function<a class="anchor-link" href="#Call-function-using-deployed-Lambda-function"> </a></h1>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">lineLambda</span> <span class="o">=</span> <span class="n">LineLambda</span><span class="p">(</span><span class="n">USER</span><span class="p">,</span> <span class="n">PW</span><span class="p">)</span>
+<span class="n">lineLambda</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="n">roomId</span> <span class="o">=</span> <span class="n">sampleInput</span><span class="p">[</span><span class="s1">&#39;roomId&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 38.6 ms, sys: 16.9 ms, total: 55.5 ms
+Wall time: 235 ms
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
 </div>
 
 </div>

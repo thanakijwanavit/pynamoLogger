@@ -6,6 +6,7 @@ __all__ = ['FunctionNames', 'Line', 'LineLambda']
 from lambdasdk.lambdasdk import Lambda
 from linebot.models import TextSendMessage
 from linebot import LineBotApi
+from json import JSONDecodeError
 import bz2,  boto3, base64, logging, os
 
 # Cell
@@ -35,6 +36,7 @@ class Line:
   def send(self, message:str = '', roomId:str=''):
     self.line_bot_api.push_message(roomId, TextSendMessage(text = message))
     return True
+
   @staticmethod
   def lambdaSend(event, _):
     line = Line(accessKey = os.environ.get('LINEACCESSKEY') or event['accessKey'])
@@ -55,12 +57,16 @@ class LineLambda:
       pw = self.pw,
       region = self.region
     )
-    lambda_.invoke(
-      functionName = functionName,
-      input = {
-        'message': message,
-        'roomId': roomId,
-        'accessKey': self.accessKey
-      }
-    )
+    try:
+      lambda_.invoke(
+        functionName = functionName,
+        input = {
+          'message': message,
+          'roomId': roomId,
+          'accessKey': accessKey
+        },
+        invocationType = 'Event'
+      )
+    except JSONDecodeError as e:
+      logging.exception('maybe there is no response')
     return True
