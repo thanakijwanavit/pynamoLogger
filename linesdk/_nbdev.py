@@ -13,8 +13,8 @@ index = {"Response": "Schema.ipynb",
 modules = ["schema.py",
            "linesdk.py"]
 
-doc_url = "https://thanakijwanavit.github.io/linebotsdk/"
+doc_url = "https://thanakijwanavit.github.io/linesdk/"
 
-git_url = "https://github.com/thanakijwanavit/linebotsdk/tree/master/"
+git_url = "https://github.com/thanakijwanavit/linesdk/tree/master/"
 
 def custom_doc_links(name): return None

@@ -12,7 +12,7 @@ Uploading a large amount of data using s3
 
 ## generate dummy data for testing
 
-```
+```python
 #Dummy Data
 sampleInput = {
   "message": "helloWorld",
@@ -24,7 +24,7 @@ sampleInput = {
 
 ## Create main class object
 
-```
+```python
 from linesdk.linesdk import Line
 
 line = Line(accessKey = sampleInput['accessKey'] )
@@ -32,7 +32,7 @@ line = Line(accessKey = sampleInput['accessKey'] )
 
 ## send message
 
-```
+```python
 %%time
 line.send(roomId = sampleInput['roomId'] ,message = sampleInput['message'])
 ```
@@ -50,7 +50,7 @@ line.send(roomId = sampleInput['roomId'] ,message = sampleInput['message'])
 
 ## LambdaFunction
 
-```
+```python
 %%time
 line.lambdaSend(sampleInput, _)
 ```
@@ -58,3 +58,11 @@ line.lambdaSend(sampleInput, _)
     CPU times: user 12.8 ms, sys: 1.92 ms, total: 14.7 ms
     Wall time: 409 ms
 
+
+# Call a deployed lambda function
+
+```python
+%%time
+lineLambda = LineLambda(USER, PW)
+lineLambda.send(message='hello', roomId = sampleInput['roomId'])
+```
