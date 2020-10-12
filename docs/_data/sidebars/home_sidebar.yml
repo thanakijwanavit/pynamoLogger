@@ -13,7 +13,7 @@ entries:
       title: Schema
       url: Schema.html
     - output: web,pdf
-      title: Products
+      title: lineSdk
       url: linesdk.html
     output: web
     title: linesdk
