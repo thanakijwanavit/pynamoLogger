@@ -10,12 +10,9 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: lineSdk
-      url: linesdk.html
-    - output: web,pdf
-      title: Title
-      url: slack.html
+      title: Usage
+      url: PynamoLogger.html
     output: web
-    title: linesdk
+    title: pynamoLogger
   output: web
   title: Sidebar

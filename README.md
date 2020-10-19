@@ -1,71 +1,54 @@
-# lineSdk
-> read and write product information in real time
+# PynamoLogger
+> log information into a dynamodb, with dax support
 
 
 ## Install
 
-`pip install linesdk`<br>
-# view [Documentation](https://thanakijwanavit.github.io/linesdk/)
+`pip install pynamologger`<br>
+# view [Documentation](https://thanakijwanavit.github.io/pynamoLogger/)
 
-## How to use
+# Usage
 
-Uploading a large amount of data using s3
-
-## generate dummy data for testing
-
-```python
-#Dummy Data
-sampleInput = {
-  "message": "helloWorld",
-  "roomId": 'C9ba1d024ed36979222a2a2a8f67cfc9a' ,
-  "accessKey": accessKey
-}
+## class meta definition
 
 ```
-
-## Create main class object
-
-```python
-from linesdk.linesdk import Line
-
-line = Line(accessKey = sampleInput['accessKey'] )
+from pynamoLogger.logger import PynamoLogger
+class Logger(PynamoLogger):
+  class Meta:
+    table_name = 'member-database-log-dev-manual'
+    region = 'ap-southeast-1'
+    billing_mode = 'PAY_PER_REQUEST'
+    
 ```
 
-## send message
-
-```python
-%%time
-line.send(roomId = sampleInput['roomId'] ,message = sampleInput['message'])
+```
+# Logger.create_table()
 ```
 
-    CPU times: user 17.3 ms, sys: 5.13 ms, total: 22.4 ms
-    Wall time: 352 ms
-
-
-
-
-
-    True
-
-
-
-## LambdaFunction
-
-```python
-%%time
-line.lambdaSend(sampleInput, _)
+```
+Logger.log(appName = 'test', message = "this is crazy", responseObject = {'response': 'null response'})
 ```
 
-    CPU times: user 12.8 ms, sys: 1.92 ms, total: 14.7 ms
-    Wall time: 409 ms
 
 
-# Call a deployed lambda function
 
-```python
-%%time
-lineLambda = LineLambda(USER, PW)
-lineLambda.send(message='hello', roomId = sampleInput['roomId'])
+    {'logId': 1603075789.054751,
+     'saveResult': {'ConsumedCapacity': {'CapacityUnits': 1.0,
+       'TableName': 'member-database-log-dev-manual'}}}
+
+
+
+```
+Logger.checkLog(appName = 'test', logId = '1603074235.103042')
 ```
 
-## Invoke slack
+
+
+
+    [{'appName': None,
+      'timestamp': 1603074235.103042,
+      'logMessage': 'this is crazy',
+      'requestObject': {'noValue': 'noValue'},
+      'responseObject': {'response': 'null response'}}]
+
+

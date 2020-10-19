@@ -1,7 +1,6 @@
 {
-  "linesdk": {
+  "pynamoLogger": {
     "Overview": "/",
-    "lineSdk": "linesdk.html",
-    "Title": "slack.html"
+    "Usage": "PynamoLogger.html"
   }
 }
