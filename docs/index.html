@@ -50,6 +50,38 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-a-dynamodb-table">create a dynamodb table<a class="anchor-link" href="#create-a-dynamodb-table"> </a></h2><h4 id="indexKey">indexKey<a class="anchor-link" href="#indexKey"> </a></h4><ul>
+<li>appName</li>
+</ul>
+<h4 id="rangeKey">rangeKey<a class="anchor-link" href="#rangeKey"> </a></h4><ul>
+<li>timestamp</li>
+</ul>
+<h3 id="Sam-template">Sam template<a class="anchor-link" href="#Sam-template"> </a></h3><p>put this in your template.yaml file under properties section<br>
+make sure that the table name is the same in Meta declaration</p>
+<div class="highlight"><pre><span></span><span class="nt">YourLogTable</span><span class="p">:</span>
+  <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::DynamoDB::Table</span>
+  <span class="nt">Properties</span><span class="p">:</span>
+    <span class="nt">AttributeDefinitions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">appName</span>
+        <span class="nt">AttributeType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S</span>
+      <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">timestamp</span>
+        <span class="nt">AttributeType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">N</span>
+    <span class="nt">BillingMode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PAY_PER_REQUEST</span>
+    <span class="nt">TableName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;put your table name here&gt;</span>
+    <span class="nt">KeySchema</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">appName</span>
+        <span class="nt">KeyType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">HASH</span>
+      <span class="p p-Indicator">-</span> <span class="nt">AttributeName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">timestamp</span>
+        <span class="nt">KeyType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">RANGE</span>
+</pre></div>
+<h3 id="create-using-pynamodb-api">create using pynamodb api<a class="anchor-link" href="#create-using-pynamodb-api"> </a></h3><div class="highlight"><pre><span></span><span class="n">Logger</span><span class="o">.</span><span class="n">create_table</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="class-meta-definition">class meta definition<a class="anchor-link" href="#class-meta-definition"> </a></h2>
 </div>
 </div>
@@ -64,8 +96,8 @@ nb_path: "index.ipynb"
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pynamoLogger.logger</span> <span class="kn">import</span> <span class="n">PynamoLogger</span>
 <span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="n">PynamoLogger</span><span class="p">):</span>
   <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
-    <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;member-database-log-dev-manual&#39;</span>
-    <span class="n">region</span> <span class="o">=</span> <span class="s1">&#39;ap-southeast-1&#39;</span>
+    <span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;member-database-log-dev-manual&#39;</span> <span class="c1"># put your table name</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="s1">&#39;ap-southeast-1&#39;</span> <span class="c1">#put your region name</span>
     <span class="n">billing_mode</span> <span class="o">=</span> <span class="s1">&#39;PAY_PER_REQUEST&#39;</span>
     
 </pre></div>
